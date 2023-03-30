@@ -1,0 +1,7 @@
+<div class="container">
+  <h2>投稿ページ</h2>
+  <%= form_with model: @recipe, url: recipes_path, method: :post do |f| %>
+  <h4>レシピタイトル</h4>
+  <%= f.text_field :title %>
+  <% end %>
+</div>
