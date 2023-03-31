@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'homes#top'
-  resources :recipes, only: [:create, :index, :show, :update, :edit]
+  resources :recipes, only: [:new, :create, :index, :show, :update, :edit]
+  #get 'recipes/index' => 'recipes#index', as: 'recipes_index'
   resources :steps, only: [:create]
   resources :genres, only: [:create, :index]
   resources :materials, only: [:create]

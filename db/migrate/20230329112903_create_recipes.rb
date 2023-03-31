@@ -6,6 +6,7 @@ class CreateRecipes < ActiveRecord::Migration[6.1]
       t.string :title, null: false
       t.integer :hot_level, null: false
       t.integer :time, null: false
+      t.text :description, null: false
       t.timestamps
     end
   end
