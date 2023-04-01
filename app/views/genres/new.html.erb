@@ -1,0 +1,7 @@
+<div class="container">
+  <h3>ジャンル入力</h3>
+  <%= form_with model: @genre, url: genres_path, method: :post do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit '投稿' %>
+  <% end %>
+</div>

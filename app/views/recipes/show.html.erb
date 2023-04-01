@@ -1,7 +1,7 @@
 <div class="container">
-  <% @recipe.each do |recipe| %>
-  <%= recipe.title %>
-  <%= image_tag recipe.get_image %>
-  <%= recipe.description %>
-  <%= recipe.time %>
+  <%= @recipe.title %>
+  <%= image_tag @recipe.get_image %>
+  <%= @recipe.description %>
+  <%= @recipe.time %>
+  
 </div>

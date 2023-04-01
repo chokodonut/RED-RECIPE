@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :recipes, only: [:new, :create, :index, :show, :update, :edit]
   #get 'recipes/index' => 'recipes#index', as: 'recipes_index'
   resources :steps, only: [:create]
-  resources :genres, only: [:create, :index]
+  resources :genres, only: [:create,:new, :index]
   resources :materials, only: [:create]
   resources :reports, only: [:create]
   resources :comments, only: [:create]
