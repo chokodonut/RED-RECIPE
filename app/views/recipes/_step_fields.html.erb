@@ -1,0 +1,8 @@
+<div class="nested-fields">
+  <h4>作り方</h4>
+  <div class="field">
+    ステップ<%= f.select :step_no, *[1..10] %>
+    <%= f.text_area :content %>
+    <%= f.file_field :image, accept: "image/*" %>
+  </div>  
+</div>

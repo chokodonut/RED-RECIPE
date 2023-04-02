@@ -1,49 +1,45 @@
 <div class="container">
   <h2>投稿ページ</h2>
-  <%= form_with(model:[@recipe, @material, @step],url: recipes_path, method: :post) do |f| %>
-  <h4>レシピタイトル</h4>
-  <%= f.text_field :title %>
-  <h4>料理画像</h4>
-  <%= f.file_field :image, accept: "image/*" %>
-  <h4>レシピについて</h4>
-  <%= f.text_area :description %>
-  <h4>所要時間</h4>
-  <%= f.select :time, *[5..40] %>分
-  辛さレベル<%= f.select :hot_level, *[1..5] %>
-  ジャンル選択<%= f.select :genre_id , options_from_collection_for_select(Genre.all, :id, :name) %>
+  <%= form_with(model: @recipe, url: recipes_path, method: :post) do |f| %>
+    <h4>レシピタイトル</h4>
+    <%= f.text_field :title %>
+    <h4>料理画像</h4>
+    <%= f.file_field :image, accept: "image/*" %>
+    <h4>レシピについて</h4>
+    <%= f.text_area :description %>
+    <h4>所要時間</h4>
+    <%= f.select :time, *[5..40] %>分
+    辛さレベル<%= f.select :hot_level, *[1..5] %>
+    ジャンル選択<%= f.select :genre_id , options_from_collection_for_select(Genre.all, :id, :name) %>
 
-  <h4>材料</h4>
-  <%= f.text_field :name %>
-  <%= f.text_field :name %>
-  <%= f.text_field :name %>
-  <h4>分量</h4>
-  <%= f.text_field :quantity %>
-  <%= f.text_field :quantity %>
-  <%= f.text_field :quantity %>
+      <div id='materials'>
+        <%= f.fields_for :materials do |material| %>
+          <%= render 'material_fields', :f => material %>
+        <% end %>
+        <div class='links'>
+          <%= link_to_add_association '材料追加', f, :materials,
+           data: {
+            association_insertion_node: '#detail-association-insertion-point',
+            association_insertion_method: 'after'
+            } %>
+        </div>
+      </div>
+    <div id="detail-association-insertion-point"></div>
 
-  <h4>作り方</h4>
-
-  ステップ<%= f.select :step_no, *[1..10] %>
-  <%= f.text_area :content %>
-  <%= f.file_field :image, accept: "image/*" %>
-
-  ステップ<%= f.select :step_no, *[1..10] %>
-  <%= f.text_area :content %>
-  <%= f.file_field :image, accept: "image/*" %>
-
-  ステップ<%= f.select :step_no, *[1..10] %>
-  <%= f.text_area :content %>
-  <%= f.file_field :image, accept: "image/*" %>
-
-  ステップ<%= f.select :step_no, *[1..10] %>
-  <%= f.text_area :content %>
-  <%= f.file_field :image, accept: "image/*" %>
-
-  ステップ<%= f.select :step_no, *[1..10] %>
-  <%= f.text_area :content %>
-  <%= f.file_field :image, accept: "image/*" %>
-
-  <%= f.submit '投稿' %>
+    <div id='steps'>
+        <%= f.fields_for :steps do |step| %>
+          <%= render 'step_fields', :f => step %>
+        <% end %>
+        <div class='links'>
+          <%= link_to_add_association 'ステップ追加', f, :step,
+           data: {
+            association_insertion_node: '#detail-association-insertion-point',
+            association_insertion_method: 'after'
+            } %>
+        </div>
+      </div>
+    <div id="detail-association-insertion-point"></div>
+    <%= f.submit '投稿' %>
 
   <% end %>
 </div>
