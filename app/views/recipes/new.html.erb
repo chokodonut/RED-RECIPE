@@ -27,18 +27,18 @@
     <div id="detail-association-insertion-point"></div>
 
     <div id='steps'>
-        <%= f.fields_for :steps do |step| %>
-          <%= render 'step_fields', :f => step %>
-        <% end %>
-        <div class='links'>
-          <%= link_to_add_association 'ステップ追加', f, :step,
-           data: {
-            association_insertion_node: '#detail-association-insertion-point',
-            association_insertion_method: 'after'
-            } %>
-        </div>
+      <%= f.fields_for :steps do |step| %>
+        <%= render 'step_fields', :f => step %>
+      <% end %>
+      <div class='links'>
+        <%= link_to_add_association 'ステップ追加', f, :steps %>
+        <!--# data: {-->
+        <!--#   association_insertion_node: '#detail-association-insertion-point',-->
+        <!--#   association_insertion_method: 'append'}-->
+
       </div>
-    <div id="detail-association-insertion-point"></div>
+    </div>
+    <!--<div id="detail-association-insertion-point"></div>-->
     <%= f.submit '投稿' %>
 
   <% end %>

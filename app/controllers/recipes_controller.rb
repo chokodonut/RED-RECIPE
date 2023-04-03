@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
     @recipe.save
 
     # byebug
-    redirect_to recipe_path(recipe_id)
+    redirect_to recipe_path(@recipe.id)
   end
 
   def index
@@ -20,13 +20,12 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    @material = Material.find(params[:id])
-    @step = Step.find(params[:id])
+
   end
   private
 
   def recipe_params
     params.require(:recipe).permit(:time, :hot_level, :image, :description, :genre_id, :title,
-    materials_attributes: [:id, :name,:quantity], steps_attributes: [:id, :step_no, :content, :image])
+    materials_attributes: [:id, :name, :quantity, :_destroy], steps_attributes: [:id, :step_no, :content, :image, :_destroy])
   end
 end

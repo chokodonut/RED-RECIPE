@@ -3,6 +3,8 @@
   <div class="field">
     ステップ<%= f.select :step_no, *[1..10] %>
     <%= f.text_area :content %>
-    <%= f.file_field :image, accept: "image/*" %>
-  </div>  
+    <%= f.file_field :image, multiple: true, accept: "image/*" %>
+
+    <%= link_to_remove_association "削除", f %>
+  </div>
 </div>
