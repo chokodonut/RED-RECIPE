@@ -1,6 +1,6 @@
 <div class="container">
   <%= @recipe.title %>
-  <%= image_tag @recipe.get_image, size:"450x350" %>
+  <%= image_tag @recipe.get_image(450,300) %>
   <h3>レシピについて</h3>
   <%= @recipe.description %>
   所要時間<%= @recipe.time %>分
@@ -32,10 +32,12 @@
       <th>
         <%= recipe.content %>
       </th>
+      <% recipe.images.each do |image| %>
       <th>
-        <%= image_tag recipe.get_image, size: "250x250" %>
+        <%= image_tag image, size:"200x200" %>
       </th>
     </tr>
+      <% end %>
     <% end %>
   </table>
 </div>

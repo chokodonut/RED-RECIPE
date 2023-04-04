@@ -7,9 +7,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   resources :recipes, only: [:new, :create, :index, :show, :update, :edit]
   #get 'recipes/index' => 'recipes#index', as: 'recipes_index'
-  resources :steps, only: [:create]
   resources :genres, only: [:create,:new, :index]
-  resources :materials, only: [:create]
   resources :reports, only: [:create]
   resources :comments, only: [:create]
 end
