@@ -1,0 +1,14 @@
+<div class="container">
+  <%= form_with model: @user, url: user_path(@user.id), method: :patch do |f| %>
+  <div>
+    <%= f.file_field :images, accept: "image/*" %>
+    <%= image_tag @user.page_image(800, 200) %>
+  </div>
+  <div>
+    <%= f.file_field :images, accept: "image/*" %>
+    <%= image_tag @user.user_image(150, 150) %>
+  </div>
+  <h3>ニックネーム</h3>
+  <%= f.text_field :name %>
+  <% end %>
+</div>

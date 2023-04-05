@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'homes#top'
+  get 'users/my_page' => 'users#show', as: 'my_page'
+  get 'my_page/edit' => 'users#edit', as: 'user_edit'
+  resources :users, only: [:update]
   resources :recipes, only: [:new, :create, :index, :show, :update, :edit]
-  #get 'recipes/index' => 'recipes#index', as: 'recipes_index'
   resources :genres, only: [:create,:new, :index]
   resources :reports, only: [:create]
   resources :comments, only: [:create]
