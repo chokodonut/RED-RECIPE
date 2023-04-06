@@ -2,11 +2,11 @@
   <h3>レシピ一覧</h3>
   <div class="row">
     <% @recipe.each do |recipe| %>
-    <%= recipe.title %>
-    <%= link_to recipe_path(recipe.id) do %>
-    <%= image_tag recipe.get_image(150,150) %>
-    <% end %>
-    <%= recipe.description %>
+      <%= recipe.title %>
+      <%= link_to recipe_path(recipe.id) do %>
+        <%= image_tag recipe.get_image(200,200) %>
+      <% end %>
+      <%= recipe.description %>
     <% end %>
   </div>
 </div>

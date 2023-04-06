@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'users/my_page' => 'users#show', as: 'my_page'
   get 'my_page/edit' => 'users#edit', as: 'user_edit'
+  get 'my_page/:id/recipes' => 'users#index', as: 'user_recipes'
   resources :users, only: [:update]
   resources :recipes, only: [:new, :create, :index, :show, :update, :edit]
   resources :genres, only: [:create,:new, :index]
