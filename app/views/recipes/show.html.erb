@@ -6,6 +6,11 @@
   所要時間<%= @recipe.time %>分
 
   辛さレベル<%= @recipe.hot_level %>
+  
+  <% if @recipe.user_id == current_user %>
+    <%= link_to 'レシピ編集', edit_recipe_path(@recipe.id), class: "btn btn-outline-success" %>
+  <% end %>
+  
   <table class="table">
     <tr>
       <th>材料</th>
@@ -40,4 +45,5 @@
       <% end %>
     <% end %>
   </table>
+
 </div>
