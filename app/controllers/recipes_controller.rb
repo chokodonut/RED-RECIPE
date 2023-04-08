@@ -45,11 +45,10 @@ class RecipesController < ApplicationController
   end
 
   def is_matching_login_user
-    @recipe = current_user.recipes
-    @user = User.find(params[:id])
-    unless user.id == current_user.id
-      redirect_to root_path
-    end
+    @recipes = current_user.recipes
+    @recipe = @recipes.find_by(id: params[:id])
+    redirect_to root_path
+
   end
 
   private

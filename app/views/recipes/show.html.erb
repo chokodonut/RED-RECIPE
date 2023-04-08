@@ -7,7 +7,7 @@
 
   辛さレベル<%= @recipe.hot_level %>
 
-  <% if @recipe.user_id == current_user %>
+  <% if @recipe.user_id == current_user.id %>
     <%= link_to 'レシピ編集', edit_recipe_path(@recipe.id), class: "btn btn-outline-success" %>
   <% end %>
 
