@@ -1,6 +1,14 @@
 class RecipesController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
- 
+
+  def search
+    if params[:keyword].present?
+      @recipes = Recipe.where('title LIKE ?', "%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @recipes = Recipe.all
+    end
+  end
   def new
     @recipe = Recipe.new
     @recipe.steps.build
@@ -37,12 +45,13 @@ class RecipesController < ApplicationController
   end
 
   def is_matching_login_user
+    @recipe = current_user.recipes
     @user = User.find(params[:id])
     unless user.id == current_user.id
       redirect_to root_path
     end
   end
-  
+
   private
 
   def recipe_params

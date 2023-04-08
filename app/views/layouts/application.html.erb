@@ -18,27 +18,32 @@
             <h1>RED RECIPE</h1>
           <% end %>
 
+          <%= form_with model: @recipe, url: search_recipes_path, local: true, method: :get do |f| %>
+          <%= f.text_field :keyword %>
+          <%= f.submit "検索" %>
 
-        <% if user_signed_in? %>
-          <div>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger" %>
-          </div>
-          <div>
-            <%= link_to "マイページ", my_page_path, class: "btn btn-outline-danger" %>
-          </div>
-        <% else %>
-          <div>
-            <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "btn btn-outline-danger" %>
-          </div>
-          <div>
-            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-danger" %>
-          </div>
-          <div>
-            <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-danger" %>
-          </div>
+          <% end %>
 
-        <% end %>
-        </header>
+          <% if user_signed_in? %>
+            <div>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger" %>
+            </div>
+            <div>
+              <%= link_to "マイページ", my_page_path, class: "btn btn-outline-danger" %>
+            </div>
+          <% else %>
+            <div>
+              <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "btn btn-outline-danger" %>
+            </div>
+            <div>
+              <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-danger" %>
+            </div>
+            <div>
+              <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-danger" %>
+            </div>
+
+          <% end %>
+          </header>
     <%= yield %>
   </body>
 </html>
