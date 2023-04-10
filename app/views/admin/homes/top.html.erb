@@ -1,0 +1,27 @@
+<div class="container">
+  <h3>会員一覧</h3>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>名前</th>
+      <th>登録日時</th>
+      <th>投稿レシピ</th>
+    </tr>
+    <% @user.each do |user| %>
+    <tr>
+      <td>
+        <%= user.id %>
+      </td>
+      <td>
+        <%= user.name %>
+      </td>
+      <td>
+        <%= user.created_at %>
+      </td>
+      <td>
+        <%= link_to 'レシピ一覧', admin_admin_index_path(user.id), class: 'btn btn-outline-success' %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+</div>

@@ -24,24 +24,14 @@
 
           <% end %>
 
-          <% if user_signed_in? %>
-            <div>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger" %>
-            </div>
-            <div>
-              <%= link_to "マイページ", my_page_path, class: "btn btn-outline-danger" %>
-            </div>
+          <% if admin_signed_in? %>
+            <%= render '/layouts/admin_header' %>
+          <% elsif user_signed_in?%>
+            <%= render '/layouts/user_header' %>
           <% else %>
-            <div>
-              <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "btn btn-outline-danger" %>
-            </div>
-            <div>
-              <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-danger" %>
-            </div>
-            <div>
-              <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-danger" %>
-            </div>
-
+            <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "btn btn-outline-danger" %>
+            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-danger" %>
+            <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-danger" %>
           <% end %>
           </header>
     <%= yield %>

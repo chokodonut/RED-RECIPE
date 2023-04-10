@@ -1,0 +1,16 @@
+<div class="container">
+  <h3>
+    <%= @user.name %>さんのレシピ一覧
+  </h3>
+  <% @recipe.each do |recipe| %>
+  <table class="table">
+    <tr>
+      <%= link_to recipe_path(recipe.id) do %>
+        <%= image_tag recipe.get_image(200,200) %>
+      <% end %>
+      <%= recipe.title %>
+      <%= recipe.description %>
+    </tr>
+  </table>
+  <% end %>
+</div>
