@@ -14,14 +14,14 @@
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <%= link_to root_path, class: "navbar-brand" do %>
-            <h1>RED RECIPE</h1>
-          <% end %>
-
-          <%= form_with model: @recipe, url: search_recipes_path, local: true, method: :get do |f| %>
-          <%= f.text_field :keyword %>
-          <%= f.submit "検索" %>
-
+          <% if admin_signed_in? %>
+            <%= link_to admin_root_path, class: "navbar-brand" do %>
+              <h1>RED RECIPE</h1>
+            <% end %>
+          <% else %>
+            <%= link_to root_path, class: "navbar-brand" do %>
+              <h1>RED RECIPE</h1>
+            <% end %>
           <% end %>
 
           <% if admin_signed_in? %>

@@ -1,2 +1,9 @@
+
+
+<%= form_with model: @recipe, url: search_recipes_path, local: true, method: :get do |f| %>
+  <%= f.text_field :keyword %>
+  <%= f.submit "検索" %>
+<% end %>
+
 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger" %>
 <%= link_to "マイページ", my_page_path, class: "btn btn-outline-danger" %>

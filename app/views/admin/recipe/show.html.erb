@@ -1,0 +1,45 @@
+<div class="container">
+  <%= @recipe.title %>
+  <%= image_tag @recipe.get_image(450,300) %>
+  <h3>レシピについて</h3>
+  <%= @recipe.description %>
+  所要時間<%= @recipe.time %>分
+
+  辛さレベル<%= @recipe.hot_level %>
+
+  <table class="table">
+    <tr>
+      <th>材料</th>
+      <th>分量</th>
+    </tr>
+    <tr>
+      <% @recipe.materials.each do |recipe| %>
+      <td>
+        <%= recipe.name %>
+      </td>
+      <td>
+        <%= recipe.quantity %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+  <h3>作り方</h3>
+  <table class="table">
+    <% @recipe.steps.each do |recipe| %>
+    <tr>
+      <th>
+        <%= recipe.step_no %>
+      </th>
+      <th>
+        <%= recipe.content %>
+      </th>
+      <% recipe.images.each do |image| %>
+      <th>
+        <%= image_tag image, size:"200x200" %>
+      </th>
+    </tr>
+      <% end %>
+    <% end %>
+  </table>
+
+</div>
