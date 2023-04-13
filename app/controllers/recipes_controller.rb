@@ -18,10 +18,13 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
-    @recipe.save
-
+    if @recipe.save
+      flash[:notice] = '投稿に成功しました。'
+      redirect_to recipe_path(@recipe.id)
+    else
+      render :new
+    end
     # byebug
-    redirect_to recipe_path(@recipe.id)
   end
 
   def index
@@ -33,22 +36,24 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    is_matching_login_user
     @user = current_user
     @recipe = Recipe.find(params[:id])
+    #if @recipe.user != current_user
+      redirect_to recipes_path
+    #end
 
   end
 
   def update
+    is_matching_login_user
     @recipe = Recipe.find(params[:id])
-    @recipe.update(recipe_params)
-    redirect_to recipe_path(@recipe.id)
-  end
-
-  def is_matching_login_user
-    @recipes = current_user.recipes
-    @recipe = @recipes.find_by(id: params[:id])
-    redirect_to root_path
-
+    if @recipe.update(recipe_params)
+       flash[:notice] = '更新に成功しました。'
+      redirect_to recipe_path(@recipe.id)
+    else
+      render :edit
+    end
   end
 
   private
@@ -56,5 +61,11 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:time, :hot_level, :image, :description, :genre_id, :title,
     materials_attributes: [:id, :name, :quantity, :_destroy], steps_attributes: [:id, :step_no, :content, :_destroy, images: []])
+  end
+
+  def is_matching_login_user
+    @recipes = current_user.recipes
+    @recipe = @recipes.find_by(id: params[:id])
+    redirect_to root_path
   end
 end

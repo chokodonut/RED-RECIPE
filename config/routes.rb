@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :recipes do
     resources :comments, only: :create
+    resource :book_marks, only: [:create, :destroy]
     collection do
       get 'search'
     end
@@ -28,7 +29,6 @@ Rails.application.routes.draw do
   get 'my_page/edit' => 'users#edit', as: 'user_edit'
   get 'my_page/:id/recipes' => 'users#index', as: 'user_recipes'
   resources :users, only: [:update]
-  resources :recipes, only: [:new, :create, :index, :show, :update, :edit]
   resources :reports, only: [:create]
   resources :comments, only: [:create]
 end

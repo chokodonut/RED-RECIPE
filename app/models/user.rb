@@ -5,6 +5,10 @@ class User < ApplicationRecord
   has_many :book_marks, dependent: :destroy
   has_many :reports, dependent: :destroy
   has_many :comments, dependent: :destroy
+
+  def already_book_mark?(recipe)
+    self.book_marks.exists?(recipe_id: recipe.id)
+  end
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

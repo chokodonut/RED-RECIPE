@@ -1,4 +1,6 @@
 <div class="container">
+  <%= flash[:notice] %>
+  
   <%= @recipe.title %>
   <%= image_tag @recipe.get_image(450,300) %>
   <h3>レシピについて</h3>
@@ -6,11 +8,23 @@
   所要時間<%= @recipe.time %>分
 
   辛さレベル<%= @recipe.hot_level %>
+  by<%= @recipe.user.name %>
 
   <% if @recipe.user_id == current_user.id %>
     <%= link_to 'レシピ編集', edit_recipe_path(@recipe.id), class: "btn btn-outline-success" %>
   <% end %>
 
+  <% if current_user.already_book_mark?(@recipe) %>
+    <%= link_to recipe_book_marks_path(@recipe), method: :delete do %>
+      <i class="fas fa-heart"></i>
+    <% end %>
+    <%= @recipe.book_marks.count %>
+  <% else %>
+    <%= link_to recipe_book_marks_path(@recipe), method: :post do %>
+      <i class="far fa-heart"></i>
+    <% end %>
+    <%= @recipe.book_marks.count %>
+  <% end %>
   <table class="table">
     <tr>
       <th>材料</th>
@@ -30,18 +44,18 @@
   <h3>作り方</h3>
   <table class="table">
     <% @recipe.steps.each do |recipe| %>
-    <tr>
-      <th>
-        <%= recipe.step_no %>
-      </th>
-      <th>
-        <%= recipe.content %>
-      </th>
-      <% recipe.images.each do |image| %>
-      <th>
-        <%= image_tag image, size:"200x200" %>
-      </th>
-    </tr>
+      <tr>
+        <th>
+          <%= recipe.step_no %>
+        </th>
+        <th>
+          <%= recipe.content %>
+        </th>
+        <% recipe.images.each do |image| %>
+        <th>
+          <%= image_tag image, size:"200x200" %>
+        </th>
+      </tr>
       <% end %>
     <% end %>
   </table>
