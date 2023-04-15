@@ -1,0 +1,11 @@
+<div class="container">
+  <% if @book_marks_recipe.each do |recipe| %>
+    <%= recipe.title %>
+    <%= link_to recipe_path(recipe.id) do %>
+      <%= image_tag recipe.get_image(200,200) %>
+    <% end %>
+    <%= recipe.description %>
+      by <%= recipe.user.name %>
+  <% end %>
+  <% end %>
+</div>

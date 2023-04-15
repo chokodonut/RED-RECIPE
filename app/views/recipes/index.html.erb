@@ -7,7 +7,7 @@
         <%= image_tag recipe.get_image(200,200) %>
       <% end %>
       <%= recipe.description %>
-      by<%= recipe.user.name %>
+      by <%= recipe.user.name %>
 
       <% if current_user.already_book_mark?(recipe) %>
         <%= link_to recipe_book_marks_path(recipe), method: :delete do %>

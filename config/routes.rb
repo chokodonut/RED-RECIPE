@@ -28,7 +28,9 @@ Rails.application.routes.draw do
   get 'users/my_page' => 'users#show', as: 'my_page'
   get 'my_page/edit' => 'users#edit', as: 'user_edit'
   get 'my_page/:id/recipes' => 'users#index', as: 'user_recipes'
-  resources :users, only: [:update]
+  resources :users, only: [:update] do
+    get :book_marks, on: :collection
+  end
   resources :reports, only: [:create]
   resources :comments, only: [:create]
 end
