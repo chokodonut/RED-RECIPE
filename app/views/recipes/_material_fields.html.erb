@@ -1,13 +1,18 @@
 <div class="nested-fields">
-  <div class="field">
-    <h4>材料</h4>
-    <%= f.text_field :name %>
-  </div>
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <%= f.label :材料 %><br />
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <h4>分量</h4>
-    <%= f.text_field :quantity %>
+    <div class="col-6">
+      <div class="form-group">
+        <%= f.label :分量 %><br />
+        <%= f.text_field :quantity, class: "form-control" %>
+      </div>
+    </div>
+    <%= link_to_remove_association "削除", f %>
   </div>
-
-  <%= link_to_remove_association "削除", f %>
 </div>

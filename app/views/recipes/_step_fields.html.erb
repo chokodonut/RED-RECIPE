@@ -1,10 +1,22 @@
 <div class="nested-fields">
-  <h4>作り方</h4>
-  <div class="field">
-    ステップ<%= f.select :step_no, *[1..10] %>
-    <%= f.text_area :content %>
-    <%= f.file_field :images, multiple: true, accept: "image/*" %>
+  <div class="row">
+    <div class="col-10">
+      <div class="form-inline">
+        <div class="form-check form-check-inline">
+          <%= f.label :ステップ %><br />
+          <%= f.select :step_no, *[1..10], class: "form-control" %>
+        </div>
 
-    <%= link_to_remove_association "削除", f %>
+        <div class="form-group">
+          <%= f.label :作り方 %><br />
+          <%= f.text_area :content , class: "form-control"%>
+        </div>
+
+        <div class="form-group">
+            <%= f.file_field :images, multiple: true, accept: "image/*" %>
+        </div>
+        <%= link_to_remove_association "削除", f %>
+      </div>
+    </div>
   </div>
 </div>

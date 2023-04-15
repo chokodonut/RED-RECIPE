@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
- before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :is_matching_login_user, only: [:edit, :update]
   def show
     @user = current_user
     #byebug
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def book_marks
     @user = current_user
     @book_marks = BookMark.where(user_id: current_user.id).pluck(:recipe_id)
-    @book_marks_recipe = Recipe.find(book_marks)
+    @book_marks_recipe = Recipe.find(@book_marks)
   end
 
   def edit
@@ -28,8 +28,8 @@ class UsersController < ApplicationController
   end
 
   def is_matching_login_user
-    @user = User.find(params[:id])
-    unless user.id == current_user.id
+    @user = current_user
+    if @user != current_user
       redirect_to root_path
     end
   end

@@ -9,6 +9,7 @@ class RecipesController < ApplicationController
       @recipes = Recipe.all
     end
   end
+  
   def new
     @recipe = Recipe.new
     @recipe.steps.build
@@ -39,10 +40,9 @@ class RecipesController < ApplicationController
     is_matching_login_user
     @user = current_user
     @recipe = Recipe.find(params[:id])
-    #if @recipe.user != current_user
+    if @recipe.user != current_user
       redirect_to recipes_path
-    #end
-
+    end
   end
 
   def update
@@ -66,6 +66,8 @@ class RecipesController < ApplicationController
   def is_matching_login_user
     @recipes = current_user.recipes
     @recipe = @recipes.find_by(id: params[:id])
-    redirect_to root_path
+    if @recipe.user_id != current_user.id
+      redirect_to root_path
+    end
   end
 end

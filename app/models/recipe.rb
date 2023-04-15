@@ -1,4 +1,10 @@
 class Recipe < ApplicationRecord
+  with_options presence: true do
+    validates :title
+    validates :hot_level
+    validates :time
+    validates :description
+  end
   has_one_attached :image
   belongs_to :user
   belongs_to :genre
@@ -9,7 +15,7 @@ class Recipe < ApplicationRecord
   has_many :reports, dependent: :destroy
   has_many :steps, dependent: :destroy
   accepts_nested_attributes_for :steps, allow_destroy: true
-  
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -18,5 +24,5 @@ class Recipe < ApplicationRecord
     image.variant(resize_to_limit: [width, height]).processed
   end
 
-  
+
 end

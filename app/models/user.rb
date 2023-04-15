@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  with_options presence: true do
+    validates :name
+  end
+  
   has_one_attached :image
   has_one_attached :back_image
   has_many :recipes, dependent: :destroy

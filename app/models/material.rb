@@ -1,4 +1,8 @@
 class Material < ApplicationRecord
+  with_options presence: true do
+    validates :name
+    validates :quantity
+  end
   belongs_to :recipe
   has_one_attached :image
 

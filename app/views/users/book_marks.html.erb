@@ -1,11 +1,14 @@
 <div class="container">
-  <% if @book_marks_recipe.each do |recipe| %>
-    <%= recipe.title %>
-    <%= link_to recipe_path(recipe.id) do %>
-      <%= image_tag recipe.get_image(200,200) %>
+  <% if @book_marks_recipe.present? %>
+    <% @book_marks_recipe.each do |recipe| %>
+      <%= recipe.title %>
+      <%= link_to recipe_path(recipe.id) do %>
+        <%= image_tag recipe.get_image(200,200) %>
+      <% end %>
+      <%= recipe.description %>
+        by <%= recipe.user.name %>
     <% end %>
-    <%= recipe.description %>
-      by <%= recipe.user.name %>
-  <% end %>
+  <% else %>
+    <p>お気に入りしたアイテムはありません</p>
   <% end %>
 </div>
