@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
   def show
-    @user = current_user
     @user = User.find(params[:id])
     #byebug
+  end
+  
+  def my_page
   end
 
   def book_marks
@@ -37,7 +39,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     @users = user.followers
   end
-  
+
   def is_matching_login_user
     @user = current_user
     if @user != current_user
@@ -47,6 +49,6 @@ class UsersController < ApplicationController
   private
 
   def users_params
-    params.require(:user).permit(:name, :image)
+    params.require(:user).permit(:name, :image, :id)
   end
 end
