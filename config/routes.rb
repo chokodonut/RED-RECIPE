@@ -25,12 +25,17 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :destroy]
     resources :genres, only: [:create,:new, :index, :update, :destroy, :edit]
   end
-  get 'users/my_page' => 'users#show', as: 'my_page'
+
+  get 'users/my_page/:id' => 'users#show', as: 'my_page'
   get 'my_page/edit' => 'users#edit', as: 'user_edit'
   get 'my_page/:id/recipes' => 'users#index', as: 'user_recipes'
   resources :users, only: [:update] do
     get :book_marks, on: :collection
+    resources :relationships, only: [:create, :destroy]
+    get :followings, on: :member
+    get :followers, on: :member
   end
+
   resources :reports, only: [:create]
   resources :comments, only: [:create]
 end

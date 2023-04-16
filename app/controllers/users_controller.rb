@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
   def show
     @user = current_user
+    @user = User.find(params[:id])
     #byebug
   end
 
@@ -27,6 +28,16 @@ class UsersController < ApplicationController
     @recipe = @user.recipes
   end
 
+  def followings
+    user = User.find(params[:id])
+    @users = user.followings
+  end
+
+  def followers
+    user = User.find(params[:id])
+    @users = user.followers
+  end
+  
   def is_matching_login_user
     @user = current_user
     if @user != current_user
