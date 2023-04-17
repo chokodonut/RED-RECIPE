@@ -1,26 +1,2 @@
 <%= flash[:notice] %>
-<div class="container">
-  <div class="row">
-    <div class="col-3 mx-auto">
-      <h2>新着レシピ</h2>
-      <% @recipe.each do |recipe| %>
-      <div class="card-deck">
-        <div class="card">
-          <div class="card-body">
-            <div class="card-img-top">
-              <%= link_to recipe_path(recipe.id) do %>
-                <%= image_tag recipe.get_image(200,200) %>
-              <% end %>
-              </div>
-            <h5 class="card-title"><%= recipe.title %></h5>
-            <p class="card-text"><%= recipe.description %></p>
-            <p class="card-text">by <%= recipe.user.name %></p>
-          </div>
-        </div>
-      </div>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-
+<%= render "/recipes/recipe", recipe: @recipe %>

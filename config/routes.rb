@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   get 'my_page/:id/recipes' => 'users#index', as: 'user_recipes'
   resources :users, only: [:update, :show] do
     get :book_marks, on: :collection
-    resources :relationships, only: [:create, :destroy]
+    resource :relationships, only: [:create, :destroy]
     get :followings, on: :member
     get :followers, on: :member
   end
