@@ -1,0 +1,15 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h3>みんなのレポ</h3>
+      <tabel class="tabel">
+        <% @report.each do |report| %>
+          <tr>
+            <%= image_tag report.get_image(150,150) %>
+            <%= report.content %>
+          </tr>
+        <% end %>
+      </tabel>
+    </div>
+  </div>
+</div>

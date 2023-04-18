@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :comments, only: :create
     resource :book_marks, only: [:create, :destroy]
+    resources :reports, only: [:create, :new, :index]
     collection do
       get 'search'
     end
@@ -36,6 +37,6 @@ Rails.application.routes.draw do
     get :followers, on: :member
   end
 
-  resources :reports, only: [:create]
+
   resources :comments, only: [:create]
 end
