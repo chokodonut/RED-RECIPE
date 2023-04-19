@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:show]
 
   def search
     if params[:keyword].present?
@@ -9,7 +10,7 @@ class RecipesController < ApplicationController
       @recipes = Recipe.all
     end
   end
-  
+
   def new
     @recipe = Recipe.new
     @recipe.steps.build

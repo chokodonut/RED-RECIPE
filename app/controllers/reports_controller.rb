@@ -5,7 +5,10 @@ class ReportsController < ApplicationController
   end
 
   def create
+    @recipe = Recipe.find(params[:recipe_id])
     @report = current_user.reports.new(report_params)
+    @report.recipe_id = @recipe.id 
+    #binding.pry
     @report.save
     #byebug
     redirect_to  recipe_reports_path

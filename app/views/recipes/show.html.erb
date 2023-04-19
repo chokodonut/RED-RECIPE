@@ -18,12 +18,12 @@
 
   <% if current_user.already_book_mark?(@recipe) %>
     <%= link_to recipe_book_marks_path(@recipe), method: :delete do %>
-      <i class="fas fa-heart"></i>
+      いいね<i class="fas fa-heart"></i>
     <% end %>
     <%= @recipe.book_marks.count %>
   <% else %>
     <%= link_to recipe_book_marks_path(@recipe), method: :post do %>
-      <i class="far fa-heart"></i>
+      いいね<i class="far fa-heart"></i>
     <% end %>
     <%= @recipe.book_marks.count %>
   <% end %>
@@ -62,5 +62,7 @@
     <% end %>
   </table>
   <%= link_to 'つくれぽを投稿', new_recipe_report_path(@recipe) %>
-
+  <%= link_to  recipe_reports_path(@recipe) do %>
+  <p>つくれぽ:<%= @recipe.reports.count %></p>
+  <% end %>
 </div>

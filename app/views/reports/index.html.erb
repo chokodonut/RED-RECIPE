@@ -7,6 +7,7 @@
           <tr>
             <%= image_tag report.get_image(150,150) %>
             <%= report.content %>
+            by <%= report.user.name %>
           </tr>
         <% end %>
       </tabel>

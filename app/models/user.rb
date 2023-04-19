@@ -11,7 +11,7 @@ class User < ApplicationRecord
   def is_followed_by?(user)
     reverse_of_relationships.find_by(following_id: user.id).present?
   end
-  
+
   has_one_attached :image
   has_one_attached :back_image
   has_many :recipes, dependent: :destroy
@@ -27,7 +27,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |user|
+    find_or_create_by!(email: 'guest@example.com', name: 'ゲスト') do |user|
       user.password = SecureRandom.urlsafe_base64
     end
   end
