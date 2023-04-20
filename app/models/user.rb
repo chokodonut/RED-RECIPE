@@ -31,6 +31,14 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
     end
   end
+  
+  def self.search(search)
+    if search
+      where(['username LIKE ?', "%#{search}%"])
+    else
+      all 
+    end
+  end
 
   def user_image(width, height)
     unless image.attached?

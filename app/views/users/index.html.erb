@@ -1,9 +1,16 @@
 <div class="container">
-  <% @recipe.each do |recipe| %>
-    <%= recipe.title %>
-    <%= link_to recipe_path(recipe.id) do %>
-      <%= image_tag recipe.get_image(150,150) %>
-    <% end %>
-    <%= recipe.description %>
+  <%= form_tag(users_path, :method => "get") do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag "Search" ,:username => nil ,class: "button is-info"%>
   <% end %>
+
+  <tabel class="tabel">
+    <% @users.each do |user| %>
+      <tr>
+        <%= user.name %>
+        <%= image_tag.user.user_image %>
+      </tr>
+    <% end %>
+  </tabel>
+<%= paginate users %>
 </div>
