@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     #byebug
   end
-  
+
   def my_page
   end
 
@@ -25,8 +25,13 @@ class UsersController < ApplicationController
     redirect_to my_page_path
   end
 
-  def index
-    @users = User.paginate(page: params[:page], per_page: 5).search(params[:search])
+  def search
+    if params[:keyword].present?
+      @users = User.where('name LIKE ?', "%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      flash[:notice] = '検索結果が見つかりませんでした。'
+    end
   end
 
   def recipe_index
@@ -50,7 +55,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
   end
-  
+
   private
 
   def users_params

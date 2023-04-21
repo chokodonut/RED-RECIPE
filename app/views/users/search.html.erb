@@ -1,0 +1,14 @@
+<div class="container">
+  <%= flash[:notice] %>
+  <h2>検索結果 "<%= @keyword %>"</h2>
+    <tabel class="tabel">
+      <tr>
+        <% @users.each do |user| %>
+          <%= link_to user_path(user.id) do %>
+            <%= image_tag user.user_image(200,200) %>
+          <% end %>
+          <%= user.name %>
+        <% end %>
+      </tr>
+    </tabel>
+</div>
