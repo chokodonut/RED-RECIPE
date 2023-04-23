@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   def index
-    @user = User.find(params[:id])
+    @user = User.page(params[:page])
     @recipe = @user.recipes
   end
 
@@ -8,6 +8,10 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def report
+    @report = Report.page(params[:page])
+  end
+  
   def destroy
     user = User.find(params[:id])
     user.destroy

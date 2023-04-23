@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     get ':id/recipes' => 'users#index', as: 'admin_index'
+    get 'reports/:id' => 'users#report', as: 'user_report'
     resources :recipe, only: [:show]
     resources :users, only: [:show, :destroy]
     resources :genres, only: [:create,:new, :index, :update, :destroy, :edit]

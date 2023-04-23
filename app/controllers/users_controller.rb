@@ -28,9 +28,14 @@ class UsersController < ApplicationController
   def search
     if params[:keyword].present?
       @users = User.where('name LIKE ?', "%#{params[:keyword]}%")
+      #byebug
       @keyword = params[:keyword]
+      if !@users.present?
+        @users = User.all
+      end
     else
-      flash[:notice] = '検索結果が見つかりませんでした。'
+      # flash[:notice] = '検索結果が見つかりませんでした。'
+      @users = User.all
     end
   end
 

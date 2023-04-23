@@ -1,2 +1,7 @@
 <%= flash[:notice] %>
-<%= render "/recipes/recipe", recipe: @recipe %>
+<div class="container">
+  <div class="row">
+    <h2>新着レシピ</h2>
+  </div>
+  <%= render "/recipes/recipe", recipe: @recipe %>
+</div>  

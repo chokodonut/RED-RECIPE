@@ -6,6 +6,9 @@ class RecipesController < ApplicationController
     if params[:keyword].present?
       @recipes = Recipe.where('title LIKE ?', "%#{params[:keyword]}%")
       @keyword = params[:keyword]
+      if !@recipes.prsent?
+        @recipes.all
+        
     else
       @recipes = Recipe.all
     end
@@ -30,7 +33,7 @@ class RecipesController < ApplicationController
   end
 
   def index
-    @recipe = Recipe.all
+    @recipe = Recipe.page(params[:page])
   end
 
   def show

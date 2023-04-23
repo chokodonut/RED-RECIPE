@@ -1,14 +1,20 @@
 <div class="container">
   <%= flash[:notice] %>
-
-  <%= @recipe.title %>
-  <%= image_tag @recipe.get_image(450,300) %>
-  <h3>レシピについて</h3>
-  <%= @recipe.description %>
-  所要時間<%= @recipe.time %>分
-
-  辛さレベル<%= @recipe.hot_level %>
-  by<%= @recipe.user.name %>
+  <div class="row">
+    <h3><%= @recipe.title %></h3>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <%= image_tag @recipe.get_image(450,300) %>
+    </div>
+    <div class="col-6">
+      <h3>レシピについて</h3>
+      <%= @recipe.description %>
+      <p>所要時間<%= @recipe.time %>分</p>
+      <p>辛さレベル<%= @recipe.hot_level %></p>
+      <p>by<%= @recipe.user.name %></p>
+    </div>
+  </div>
 
   <% if @recipe.user_id == current_user.id %>
     <%= link_to 'レシピ編集', edit_recipe_path(@recipe.id), class: "btn btn-outline-success" %>
@@ -18,12 +24,12 @@
 
   <% if current_user.already_book_mark?(@recipe) %>
     <%= link_to recipe_book_marks_path(@recipe), method: :delete do %>
-      いいね<i class="fas fa-heart"></i>
+      ブックマーク<i class="far fa-bookmark"></i>
     <% end %>
     <%= @recipe.book_marks.count %>
   <% else %>
     <%= link_to recipe_book_marks_path(@recipe), method: :post do %>
-      いいね<i class="far fa-heart"></i>
+      ブックマーク<i class="far fa-bookmark"></i>
     <% end %>
     <%= @recipe.book_marks.count %>
   <% end %>
