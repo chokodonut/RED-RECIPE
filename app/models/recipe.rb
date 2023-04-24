@@ -24,5 +24,14 @@ class Recipe < ApplicationRecord
     image.variant(resize_to_limit: [width, height]).processed
   end
 
+  def self.recipes_search(keyword)
+    if keyword.present?
+      recipes = Recipe.where('title LIKE ?', "%#{keyword}%")
+      if recipes.present?
+        return recipes
+      end
+    end
+      Recipes.all
+  end
 
 end

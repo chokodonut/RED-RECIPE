@@ -2,18 +2,7 @@ class RecipesController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
   before_action :authenticate_user!, only: [:show]
 
-  def search
-    if params[:keyword].present?
-      @recipes = Recipe.where('title LIKE ?', "%#{params[:keyword]}%")
-      @keyword = params[:keyword]
-      if !@recipes.prsent?
-        @recipes.all
-        
-    else
-      @recipes = Recipe.all
-    end
-  end
-
+  
   def new
     @recipe = Recipe.new
     @recipe.steps.build

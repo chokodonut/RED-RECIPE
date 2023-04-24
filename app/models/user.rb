@@ -47,4 +47,15 @@ class User < ApplicationRecord
     end
     back_image.variant(resize_to_limit: [width, height]).processed
   end
+  
+  def self.users_search(keyword)
+    if keyword.present?
+      users = User.where('name LIKE ?', "%#{keyword}%")
+      if users.present?
+        return users
+      end
+    end
+    User.all
+  end
+
 end

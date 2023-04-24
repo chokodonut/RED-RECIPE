@@ -25,20 +25,6 @@ class UsersController < ApplicationController
     redirect_to my_page_path
   end
 
-  def search
-    if params[:keyword].present?
-      @users = User.where('name LIKE ?', "%#{params[:keyword]}%")
-      #byebug
-      @keyword = params[:keyword]
-      if !@users.present?
-        @users = User.all
-      end
-    else
-      # flash[:notice] = '検索結果が見つかりませんでした。'
-      @users = User.all
-    end
-  end
-
   def recipe_index
     @user = User.find(params[:id])
     @recipe = @user.recipes
