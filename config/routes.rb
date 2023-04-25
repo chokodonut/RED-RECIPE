@@ -35,6 +35,4 @@ Rails.application.routes.draw do
     resource :book_marks, only: [:create, :destroy]
     resources :reports, only: [:create, :new, :index]
   end
-
-  resources :comments, only: [:create]
 end

@@ -31,7 +31,7 @@ class Recipe < ApplicationRecord
         return recipes
       end
     end
-      Recipes.all
+      Recipe.all
   end
 
 end

@@ -1,24 +1,38 @@
 <div class="container">
   <% if @range == "Recipe" %>
     <h2>検索結果 "<%= @keyword %>"</h2>
-      <% @recipes.each do |recipe| %>
-        <%= link_to recipe_path(recipe.id) do %>
-          <%= image_tag recipe.get_image(200,200) %>
+      <div class="row">
+        <% @recipes.each do |recipe| %>
+          <div class="card-deck">
+            <div class="card m-4">
+              <div class="card-body">
+                <div class="card-img-top">
+                  <%= link_to recipe_path(recipe.id) do %>
+                    <%= image_tag recipe.get_image(200,200) %>
+                  <% end %>
+                </div>
+                <h5 class="card-title"><%= recipe.title %></h5>
+                <p class="card-text"><%= recipe.description %></p>
+                <p class="card-text">by <%= recipe.user.name %></p>
+              </div>
+            </div>
+          </div>
         <% end %>
-        <%= recipe.description %>
-        <%= recipe.user.name %>
-      <% end %>
+      </div>
+
   <% else %>
-    <h2>検索結果 "<%= @keyword %>"</h2>
-    <tabel class="tabel">
-      <tr>
-        <% @users.each do |user| %>
-          <%= link_to user_path(user.id) do %>
-            <%= image_tag user.user_image(200,200) %>
-          <% end %>
-          <%= user.name %>
-        <% end %>
-      </tr>
-    </tabel>
+  <h2>検索結果 "<%= @keyword %>"</h2>
+    <table class="table">
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= link_to user_path(user.id) do %>
+              <%= image_tag user.user_image(200,200) %>
+            <% end %>
+            <%= user.name %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
   <% end %>
 </div>
