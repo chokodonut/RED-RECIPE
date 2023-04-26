@@ -2,9 +2,11 @@ class RecipesController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
   before_action :authenticate_user!, only: [:show]
 
-  
+
   def new
     @recipe = Recipe.new
+    @recipe.steps.build
+    @recipe.materials.build
     @recipe.steps.build
     @recipe.materials.build
   end

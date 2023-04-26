@@ -16,12 +16,28 @@
     </div>
   </div>
 
-  <p class="text-small"><%= link_to user.followings.count, followings_user_path(user) %> フォロー <%= link_to user.followers.count, followers_user_path(user) %> フォロワー</p>
-
+  <p class="text-small">
+    <%= link_to user.followings.count, followings_user_path(user) %> フォロー <%= link_to user.followers.count, followers_user_path(user) %> フォロワー
+  </p>
+  
   <% if user == current_user %>
-    <%= link_to 'プロフィールを編集する', user_edit_path(user.id), class: "btn btn-outline-primary" %>
-    <%= link_to 'レシピを投稿する', new_recipe_path %>
-    <%= link_to 'お気に入り', book_marks_users_path %>
+    <div class="row">
+      <div class="col-4">
+        <%= link_to user_edit_path(user.id) do %>
+          プロフィール編集<i class="fas fa-user-edit"></i>
+        <% end %>
+      </div>
+      <div class="col-4">
+        <%= link_to new_recipe_path do %>
+          レシピを投稿する<i class="fas fa-pencil-alt"></i>
+        <% end %>
+      </div>
+      <div class="col-4">
+        <%= link_to book_marks_users_path do %>
+          お気に入り<i class="far fa-bookmark"></i>
+        <% end %>
+      </div>
+    </div>
   <% else %>
     <% if user.is_followed_by?(current_user) %>
       <%= link_to user_relationships_path(user), method: :delete do %>

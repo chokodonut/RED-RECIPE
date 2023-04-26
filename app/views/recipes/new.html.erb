@@ -18,22 +18,26 @@
             <%= f.label :レシピについて %><br />
             <%= f.text_area :description, class: "form-control" %>
           </div>
-
-          <div class="form-check form-check-inline">
-            <%= f.label :所要時間 %><br />
-            <%= f.select :time, *[5..40], class: "form-control" %>分
+          <div class="row">
+            <div class="col-3">
+              <div class="form-check form-check-inline">
+                <%= f.label :所要時間, class: "mr-3" %><br />
+                <%= f.select :time, *[5..40], class: "form-control" %>分
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-check form-check-inline">
+                <%= f.label :辛さレベル, class: "mr-3" %><br />
+                <%= f.select :hot_level, *[1..5], class: "form-control" %>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-check form-check-inline">
+                <%= f.label :ジャンル選択, class: "mr-1" %><br />
+                <%= f.select :genre_id , options_from_collection_for_select(Genre.all, :id, :name), class: "form-control" %>
+              </div>
+            </div>
           </div>
-
-          <div class="form-check form-check-inline">
-            <%= f.label :辛さレベル %><br />
-            <%= f.select :hot_level, *[1..5], class: "form-control" %>
-          </div>
-
-          <div class="form-check form-check-inline">
-            <%= f.label :ジャンル選択 %><br />
-            <%= f.select :genre_id , options_from_collection_for_select(Genre.all, :id, :name), class: "form-control" %>
-          </div>
-
             <div id='materials'>
               <%= f.fields_for :materials do |material| %>
                 <%= render 'material_fields', :f => material %>
