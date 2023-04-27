@@ -1,3 +1,15 @@
+ <%= link_to recipe_path(1), do %>
+<div class="card">
+  <div class="card-body">
+    <img src="https://c9f9c1cd74ca4c64a25c165194bf0e7c.vfs.cloud9.ap-northeast-1.amazonaws.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBMZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--093d0ddc1990d1265cf45a64ebff5e81141dc61b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFISWFRSEkiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--96dcab0b6cbcf7148c2811b080ab6f2721050407/26124439_s.jpg">
+    <h5 class="card-title">辛みそラーメン</h5>
+    <h6 class="card-subtitle mb-2 text-muted">辛ラーメンアレンジ</h6>
+    <p class="card-text"></p>
+  </div>
+</div>
+<% end %>
+
+
 <div class="row">
   <% recipe.each do |recipe| %>
     <div class="card-deck">

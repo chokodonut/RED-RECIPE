@@ -1,3 +1,4 @@
+<%= flash[:notice] %>
 <div class="container">
   <div class="row">
     <div class="col-10">
@@ -19,8 +20,8 @@
   <p class="text-small">
     <%= link_to user.followings.count, followings_user_path(user) %> フォロー <%= link_to user.followers.count, followers_user_path(user) %> フォロワー
   </p>
-  
-  <% if user == current_user %>
+
+  <% if user == current_user && user.name != "ゲスト" %>
     <div class="row">
       <div class="col-4">
         <%= link_to user_edit_path(user.id) do %>
