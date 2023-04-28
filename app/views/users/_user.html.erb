@@ -1,7 +1,7 @@
 <%= flash[:notice] %>
 <div class="container">
   <div class="row">
-    <div class="col-10">
+    <div class="col-12">
       <%= image_tag user.page_image(700, 200), class: "w-100", style: "height: 200px;" %>
     </div>
   </div>
@@ -23,20 +23,23 @@
 
   <% if user == current_user && user.name != "ゲスト" %>
     <div class="row">
-      <div class="col-4">
+      <div class="col-3">
         <%= link_to user_edit_path(user.id) do %>
           プロフィール編集<i class="fas fa-user-edit"></i>
         <% end %>
       </div>
-      <div class="col-4">
+      <div class="col-3">
         <%= link_to new_recipe_path do %>
           レシピを投稿する<i class="fas fa-pencil-alt"></i>
         <% end %>
       </div>
-      <div class="col-4">
+      <div class="col-3">
         <%= link_to book_marks_users_path do %>
           お気に入り<i class="far fa-bookmark"></i>
         <% end %>
+      </div>
+      <div class="col-3">
+        <%= link_to '投稿したつくれぽ', my_page_reports_path(user.id) %>
       </div>
     </div>
   <% else %>

@@ -10,6 +10,12 @@ class UsersController < ApplicationController
   def my_page
   end
 
+  def report
+    @user = current_user
+    @report = @user.reports
+    
+  end
+
   def book_marks
     @user = current_user
     @book_marks = BookMark.where(user_id: current_user.id).pluck(:recipe_id)
@@ -18,7 +24,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
-
   end
 
   def update

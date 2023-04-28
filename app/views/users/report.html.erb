@@ -1,0 +1,25 @@
+<%= render "user", user: current_user%>
+
+<div class="container">
+  <h3>投稿したつくれぽ</h3>
+  <div class="row">
+    <% if @report.present? %>
+      <% @report.each do |report| %>
+        <div class="card-deck">
+          <div class="card m-4">
+            <div class="card-body">
+              <div class="card-img-top">
+                <%= image_tag report.get_image(150,150) %>
+                <p class="card-text"><%= report.content %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>まだつくれぽを投稿していません。</p>
+    <% end %>
+  </div>
+</div>
+
+
