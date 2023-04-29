@@ -1,4 +1,7 @@
-
+<div class="row">
+  <img src="top_img.jpg">
+  <%#= image_tag () %>
+</div>
 
 
 <div class="row">
@@ -8,7 +11,7 @@
         <div class="card-body">
           <div class="card-img-top">
             <%= link_to recipe_path(recipe.id) do %>
-              <%= image_tag recipe.get_image(200,200) %>
+              <%= image_tag recipe.get_image(200,133) %>
             <% end %>
           </div>
           <h5 class="card-title"><%= recipe.title %></h5>

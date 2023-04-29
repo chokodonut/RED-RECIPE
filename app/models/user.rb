@@ -14,6 +14,7 @@ class User < ApplicationRecord
 
   has_one_attached :image
   has_one_attached :back_image
+  has_one_attached :top_image
   has_many :recipes, dependent: :destroy
   has_many :book_marks, dependent: :destroy
   has_many :reports, dependent: :destroy
@@ -42,11 +43,12 @@ class User < ApplicationRecord
 
   def page_image(width, height)
     unless back_image.attached?
-      file_path = Rails.root.join('app/assets/images/25486701_l.jpg')
+      file_path = Rails.root.join('app/assets/images/pepper.jpg')
       back_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     back_image.variant(resize_to_limit: [width, height]).processed
   end
+
 
   def self.users_search(keyword)
     if keyword.present?
