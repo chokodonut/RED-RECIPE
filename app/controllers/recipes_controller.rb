@@ -9,6 +9,8 @@ class RecipesController < ApplicationController
     @recipe.materials.build
     @recipe.steps.build
     @recipe.materials.build
+    @recipe.steps.build
+    @recipe.materials.build
   end
 
   def create

@@ -17,22 +17,32 @@
   </div>
 
   <% if @recipe.user_id == current_user.id %>
-    <%= link_to 'レシピ編集', edit_recipe_path(@recipe.id), class: "btn btn-outline-success" %>
+    <div class="row">
+      <div class="col-3 my-2">
+        <%= link_to 'レシピ編集', edit_recipe_path(@recipe.id), class: "btn btn-outline-success" %>
+      </div>
   <% end %>
-
-  <%= link_to 'プロフィールへ', user_path(@recipe.user.id), class: "btn btn-outline-primary" %>
+    <div class="col-3 my-2">
+      <%= link_to 'プロフィールへ', user_path(@recipe.user.id), class: "btn btn-outline-primary" %>
+    </div>
 
   <% if current_user.already_book_mark?(@recipe) %>
-    <%= link_to recipe_book_marks_path(@recipe), method: :delete do %>
-      ブックマーク<i class="far fa-bookmark"></i>
-    <% end %>
-    <%= @recipe.book_marks.count %>
+    <div class="col-3 my-2">
+      <%= link_to recipe_book_marks_path(@recipe), method: :delete do %>
+        ブックマーク<i class="far fa-bookmark"></i>
+      <% end %>
+      <%= @recipe.book_marks.count %>
+    </div>
   <% else %>
     <%= link_to recipe_book_marks_path(@recipe), method: :post do %>
-      ブックマーク<i class="far fa-bookmark"></i>
-    <% end %>
-    <%= @recipe.book_marks.count %>
+      <div class="col-3 my-2">
+        ブックマーク<i class="far fa-bookmark"></i>
+      <% end %>
+      <%= @recipe.book_marks.count %>
+      </div>
+    </div>
   <% end %>
+
   <table class="table">
     <tr>
       <th>材料</th>
