@@ -1,6 +1,6 @@
 <div class="container">
   <%= flash[:notice] %>
-  <div class="row">
+  <div class="row my-2">
     <h3><%= @recipe.title %></h3>
   </div>
   <div class="row">
@@ -42,7 +42,8 @@
       </div>
     </div>
   <% end %>
-
+</div>
+<div class="container">
   <table class="table">
     <tr>
       <th>材料</th>
@@ -71,7 +72,7 @@
         </th>
         <% recipe.images.each do |image| %>
         <th>
-          <%= image_tag image, size:"200x200" %>
+          <%= image_tag image, size:"150x150" %>
         </th>
       </tr>
       <% end %>
