@@ -1,9 +1,26 @@
+<%= render "user", user: @user %>
+
 <div class="container">
-  <% @recipe.each do |recipe| %>
-    <%= recipe.title %>
-    <%= link_to recipe_path(recipe.id) do %>
-      <%= image_tag recipe.get_image(150,150) %>
+  <div class="row">
+    <% @recipe.each do |recipe| %>
+      <div class="card-deck">
+        <div class="card m-5 border-danger", style="width: 18rem;">
+          <div class="card-body">
+            <div class="card-img-top">
+              <%= link_to recipe_path(recipe.id) do %>
+              <%= image_tag recipe.get_image(200,133) %>
+            <% end %>
+            </div>
+              <h5 class="card-title"><%= recipe.title %></h5>
+              <p class="card-text mb-0", style="color: #DC3543;">辛さレベル<%= recipe.hot_level %></p>
+              <p class="card-text"><%= truncate(recipe.description, length: 30) %></p>
+              <%= link_to  recipe_reports_path(@recipe), class: "text-secondary mb-0" do %>
+                <p class="card-text">つくれぽ:<%= recipe.reports.count %></p>
+              <% end %>
+              <p class="card-text text-right text-secondary">by <%= recipe.user.name %></p>
+          </div>
+        </div>
+      </div>
     <% end %>
-    <%= recipe.description %>
-  <% end %>
+  </div>
 </div>

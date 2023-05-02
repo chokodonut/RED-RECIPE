@@ -6,15 +6,19 @@
     <% if @book_marks_recipe.present? %>
       <% @book_marks_recipe.each do |recipe| %>
         <div class="card-deck">
-          <div class="card m-4">
+          <div class="card m-5 border-danger", style="width: 18rem;">
             <div class="card-body">
               <div class="card-img-top">
                 <%= link_to recipe_path(recipe.id) do %>
                   <%= image_tag recipe.get_image(200,200) %>
                 <% end %>
                 <h5 class="card-title"><%= recipe.title %></h5>
-                <p class="card-text"><%= recipe.description %></p>
-                <p class="card-text">by <%= recipe.user.name %></p>
+                <p class="card-text mb-0", style="color: #DC3543;">辛さレベル<%= recipe.hot_level %></p>
+                <p class="card-text"><%= truncate(recipe.description, length: 30) %></p>
+                <%= link_to  recipe_reports_path(recipe), class: "text-secondary mb-0" do %>
+                  <p class="card-text">つくれぽ:<%= recipe.reports.count %></p>
+                <% end %>
+                <p class="card-text text-right text-secondary">by <%= recipe.user.name %></p>
               </div>
             </div>
           </div>

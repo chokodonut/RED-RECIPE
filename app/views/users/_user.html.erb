@@ -12,7 +12,7 @@
     <div class="col-8">
       <div class="text-center", style= "padding-top: 50px;">
         <%= user.name %>さんのマイページ
-        <%= link_to '投稿したレシピ', user_recipes_path(user.id) %>
+        <%= link_to '投稿したレシピ', user_recipes_path(user.id), class: "btn btn-outline-danger" %>
       </div>
     </div>
   </div>
@@ -24,22 +24,22 @@
   <% if user == current_user && user.name != "ゲスト" %>
     <div class="row">
       <div class="col-3">
-        <%= link_to user_edit_path(user.id) do %>
+        <%= link_to user_edit_path(user.id), class: "btn btn-outline-warning" do %>
           プロフィール編集<i class="fas fa-user-edit"></i>
         <% end %>
       </div>
       <div class="col-3">
-        <%= link_to new_recipe_path do %>
+        <%= link_to new_recipe_path, class: "btn btn-outline-warning" do %>
           レシピを投稿する<i class="fas fa-pencil-alt"></i>
         <% end %>
       </div>
       <div class="col-3">
-        <%= link_to book_marks_users_path do %>
+        <%= link_to book_marks_users_path, class: "btn btn-outline-warning" do %>
           お気に入り<i class="far fa-bookmark"></i>
         <% end %>
       </div>
       <div class="col-3">
-        <%= link_to '投稿したつくれぽ', my_page_reports_path(user.id) %>
+        <%= link_to '投稿したつくれぽ', my_page_reports_path(user.id), class: "btn btn-outline-warning" %>
       </div>
     </div>
   <% else %>
