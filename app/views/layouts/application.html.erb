@@ -16,7 +16,9 @@
         <div class="container">
           <% if admin_signed_in? %>
             <%= link_to admin_root_path, class: "navbar-brand" do %>
-              <h1>RED RECIPE</h1>
+              <div class="text-danger">
+                <h1>RED RECIPE<i class="fas fa-pepper-hot"></i></h1>
+              </div>
             <% end %>
           <% else %>
             <%= link_to root_path, class: "navbar-brand" do %>

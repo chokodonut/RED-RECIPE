@@ -1,7 +1,9 @@
 class Admin::UsersController < ApplicationController
   def index
-    @user = User.page(params[:page])
+    @user = User.find(params[:id])
+    #byebug
     @recipe = @user.recipes
+
   end
 
   def show
@@ -11,7 +13,7 @@ class Admin::UsersController < ApplicationController
   def report
     @report = Report.page(params[:page])
   end
-  
+
   def destroy
     user = User.find(params[:id])
     user.destroy

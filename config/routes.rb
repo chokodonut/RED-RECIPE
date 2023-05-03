@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     get 'reports/:id' => 'users#report', as: 'user_report'
     resources :recipe, only: [:show]
     resources :users, only: [:show, :destroy]
-    resources :genres, only: [:create,:new, :index, :update, :destroy, :edit]
+    resources :genres
   end
 
   get 'search' => 'searchs#search'

@@ -16,7 +16,7 @@
           <%= link_to user.name, admin_user_path(user.id) %>
         </td>
         <td>
-          <%= user.created_at %>
+          <%= l user.created_at %>
         </td>
         <td>
           <%= link_to 'レシピ一覧', admin_admin_index_path(user.id), class: 'btn btn-outline-success' %>

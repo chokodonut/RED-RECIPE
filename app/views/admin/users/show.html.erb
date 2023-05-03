@@ -18,7 +18,7 @@
         <%= @user.email %>
       </td>
       <td>
-        <%= @user.created_at %>
+        <%= l @user.created_at %>
       </td>
       <td>
         <%= link_to '削除', admin_user_path(@user.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
