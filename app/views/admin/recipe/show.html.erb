@@ -1,12 +1,19 @@
 <div class="container">
-  <%= @recipe.title %>
-  <%= image_tag @recipe.get_image(450,300) %>
-  <h3>レシピについて</h3>
-  <%= @recipe.description %>
-  所要時間<%= @recipe.time %>分
-
-  辛さレベル<%= @recipe.hot_level %>
-
+  <div class="row my-2">
+    <h3><%= @recipe.title %></h3>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <%= image_tag @recipe.get_image(450,300) %>
+    </div>
+    <div class="col-6">
+      <h3>レシピについて</h3>
+      <%= @recipe.description %>
+      <p>所要時間<%= @recipe.time %>分</p>
+      <p>辛さレベル<%= @recipe.hot_level %></p>
+      <p>by<%= @recipe.user.name %></p>
+    </div>
+  </div>
   <table class="table">
     <tr>
       <th>材料</th>

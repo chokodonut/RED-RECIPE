@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
   def top
-    @recipe = Recipe.order('id DESC').limit(8)
+    @recipe = Recipe.order('id DESC').limit(9)
   end
 end
