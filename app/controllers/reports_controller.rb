@@ -7,7 +7,7 @@ class ReportsController < ApplicationController
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @report = current_user.reports.new(report_params)
-    @report.recipe_id = @recipe.id 
+    @report.recipe_id = @recipe.id
     #binding.pry
     @report.save
     #byebug
@@ -15,7 +15,11 @@ class ReportsController < ApplicationController
   end
 
   def index
-    @report = Report.all
+     #binding.pry
+    @recipe = Recipe.find(params[:recipe_id])
+
+    @report = @recipe.reports
+    
   end
 
   private

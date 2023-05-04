@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def report
     @user = current_user
     @report = @user.reports
-    
+
   end
 
   def book_marks
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @user.update(users_params)
-    redirect_to my_page_path
+    redirect_to my_page_path, notice: 'プロフィールが編集されました。'
   end
 
   def recipe_index
@@ -55,7 +55,8 @@ class UsersController < ApplicationController
   end
 
   def ensure_guest_user
-    @user = User.guest
+    @user = current_user
+    #binding.pry
     if @user.name == "ゲスト"
       redirect_to my_page_path , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end

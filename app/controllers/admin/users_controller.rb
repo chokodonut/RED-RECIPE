@@ -11,7 +11,8 @@ class Admin::UsersController < ApplicationController
   end
 
   def report
-    @report = Report.page(params[:page])
+    @user = User.find(params[:id])
+    @report = @user.reports
   end
 
   def destroy
