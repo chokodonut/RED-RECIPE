@@ -26,7 +26,7 @@ class RecipesController < ApplicationController
   end
 
   def index
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.page(params[:page])
   end
 
   def show

@@ -22,25 +22,27 @@
         <%= link_to 'レシピ編集', edit_recipe_path(@recipe.id), class: "btn btn-outline-success" %>
       </div>
   <% end %>
-    <div class="col-3 my-2">
-      <%= link_to 'プロフィールへ', user_path(@recipe.user.id), class: "btn btn-outline-primary" %>
-    </div>
+      <div class="col-3 my-2">
+        <%= link_to 'プロフィールへ', user_path(@recipe.user.id), class: "btn btn-outline-primary" %>
+      </div>
 
   <% if current_user.already_book_mark?(@recipe) %>
-    <div class="col-3 my-2">
-      <%= link_to recipe_book_marks_path(@recipe), method: :delete do %>
-        ブックマーク<i class="far fa-bookmark"></i>
-      <% end %>
-      <%= @recipe.book_marks.count %>
-    </div>
-  <% else %>
-    <%= link_to recipe_book_marks_path(@recipe), method: :post do %>
+    <% if @recipe.user.name == "ゲスト" %>
       <div class="col-3 my-2">
-        ブックマーク<i class="far fa-bookmark"></i>
-      <% end %>
-      <%= @recipe.book_marks.count %>
+        <%= link_to recipe_book_marks_path(@recipe), method: :delete do %>
+          ブックマーク<i class="far fa-bookmark"></i>
+        <% end %>
+        <%= @recipe.book_marks.count %>
+      </div>
+    <% else %>
+      <div class="col-3 my-2">
+        <%= link_to recipe_book_marks_path(@recipe), method: :post do %>
+          ブックマーク<i class="far fa-bookmark"></i>
+        <% end %>
+        <%= @recipe.book_marks.count %>
       </div>
     </div>
+    <% end %>
   <% end %>
 </div>
 <div class="container">
@@ -78,8 +80,10 @@
       <% end %>
     <% end %>
   </table>
-  <%= link_to 'つくれぽを投稿', new_recipe_report_path(@recipe) %>
+  <% if @recipe.user.name == "ゲスト" %>
+    <%= link_to 'つくれぽを投稿', new_recipe_report_path(@recipe) %>
+  <% end %>
   <%= link_to  recipe_reports_path(@recipe) do %>
-  <p>つくれぽ:<%= @recipe.reports.count %></p>
+    <p>つくれぽ:<%= @recipe.reports.count %></p>
   <% end %>
 </div>
