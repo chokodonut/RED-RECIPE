@@ -4,7 +4,7 @@
       <div class="form-inline">
         <div class="form-check form-check-inline">
           <%= f.label :ステップ %><br />
-          <%= f.select :step_no, *[1..10], class: "form-control" %>
+          <%= f.select :step_no, *[1..10], class: "form-control" %>※必須入力
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
     <div class="col-10">
       <div class="form-group">
         <%= f.label :作り方 %><br />
-        <%= f.text_area :content , class: "form-control border-danger"%>
+        <%= f.text_area :content , class: "form-control border-danger"%>※必須入力
       </div>
     </div>
     <div class="mt-5">

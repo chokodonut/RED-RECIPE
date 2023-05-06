@@ -1,33 +1,33 @@
 
 <%= form_with(model: recipe) do |f| %>
   <div class="form-group">
-    <%= f.label :レシピタイトル %><br />
+    <%= f.label :レシピタイトル %>※必須入力<br />
     <%= f.text_field :title, class: "form-control border-danger" %>
   </div>
 
   <div class="form-group form-File">
-    <%= f.label :完成画像 %><br />
+    <%= f.label :完成画像 %>※必須入力<<br />
     <%= f.file_field :image, accept: "image/*" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :レシピについて %><br />
+    <%= f.label :レシピについて %>※必須入力<br />
     <%= f.text_area :description, class: "form-control border-danger" %>
   </div>
   <div class="row">
-    <div class="col-3">
+    <div class="col-4">
       <div class="form-check form-check-inline">
-        <%= f.label :所要時間, class: "mr-3" %><br />
-        <%= f.select :time, *[5..40], class: "form-control border-danger" %>分
+        <%= f.label :所要時間, class: "mr-1" %><br />
+        <%= f.select :time, *[5..40], class: "form-control border-danger" %>分※必須入力
       </div>
     </div>
-    <div class="col-3">
+    <div class="col-4">
       <div class="form-check form-check-inline">
-        <%= f.label :辛さレベル, class: "mr-3" %><br />
-        <%= f.select :hot_level, *[1..5], class: "form-control border-danger" %>
+        <%= f.label :辛さレベル, class: "mr-1" %><br />
+        <%= f.select :hot_level, *[1..5], class: "form-control border-danger" %>※必須入力
       </div>
     </div>
-    <div class="col-3">
+    <div class="col-4">
       <div class="form-check form-check-inline">
         <%= f.label :ジャンル選択, class: "mr-1" %><br />
         <%= f.select :genre_id , options_from_collection_for_select(Genre.all, :id, :name), class: "form-control border-danger" %>

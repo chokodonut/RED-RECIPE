@@ -2,3 +2,21 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
+
+ja:
+  activerecord:
+    attributes:
+      recipe:
+        title: タイトル
+        description: レシピについて
+      materials:
+        quantity: 分量
+        name: 材料
+      steps:
+        step_no: ステップ
+        content: 作り方
+    errors:
+      models:
+        recipe:
+          blank: が未入力です
+

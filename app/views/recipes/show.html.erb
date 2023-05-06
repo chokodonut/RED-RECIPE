@@ -11,8 +11,8 @@
       <h3>レシピについて</h3>
       <%= @recipe.description %>
       <p>所要時間<%= @recipe.time %>分</p>
-      <p>辛さレベル<%= @recipe.hot_level %></p>
-      <p>by<%= @recipe.user.name %></p>
+      <p style="color: #DC3543;">辛さレベル<%= @recipe.hot_level %></p>
+      <p class="text-right text-secondary">by<%= @recipe.user.name %></p>
     </div>
   </div>
 
@@ -21,30 +21,31 @@
       <div class="col-3 my-2">
         <%= link_to 'レシピ編集', edit_recipe_path(@recipe.id), class: "btn btn-outline-success" %>
       </div>
+    </div>
   <% end %>
+    <div class="row">
       <div class="col-3 my-2">
-        <%= link_to 'プロフィールへ', user_path(@recipe.user.id), class: "btn btn-outline-primary" %>
+        <%= link_to 'プロフィールへ', user_path(@recipe.user.id), class: "btn btn-outline-danger" %>
       </div>
 
-  <% if current_user.already_book_mark?(@recipe) %>
-    <% if @recipe.user.name == "ゲスト" %>
+    <% if current_user.already_book_mark?(@recipe) %>
       <div class="col-3 my-2">
-        <%= link_to recipe_book_marks_path(@recipe), method: :delete do %>
+        <%= link_to recipe_book_marks_path(@recipe), method: :delete, class: "btn btn-outline-warning" do %>
           ブックマーク<i class="far fa-bookmark"></i>
         <% end %>
         <%= @recipe.book_marks.count %>
       </div>
     <% else %>
       <div class="col-3 my-2">
-        <%= link_to recipe_book_marks_path(@recipe), method: :post do %>
+        <%= link_to recipe_book_marks_path(@recipe), method: :post, class: "btn btn-outline-warning" do %>
           ブックマーク<i class="far fa-bookmark"></i>
         <% end %>
         <%= @recipe.book_marks.count %>
       </div>
     </div>
-    <% end %>
   <% end %>
 </div>
+
 <div class="container">
   <table class="table">
     <tr>
@@ -80,9 +81,7 @@
       <% end %>
     <% end %>
   </table>
-  <% if @recipe.user.name == "ゲスト" %>
     <%= link_to 'つくれぽを投稿', new_recipe_report_path(@recipe) %>
-  <% end %>
   <%= link_to  recipe_reports_path(@recipe) do %>
     <p>つくれぽ:<%= @recipe.reports.count %></p>
   <% end %>

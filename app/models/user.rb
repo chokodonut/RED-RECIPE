@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   with_options presence: true do
     validates :name
+    validates :email
+    validates :encrypted_password
   end
   has_many :relationships, foreign_key: :following_id
   has_many :followings, through: :relationships, source: :follower
