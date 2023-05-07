@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get 'search' => 'searchs#search'
   get 'my_page/:id/reports' => 'users#report', as: 'my_page_reports'
   get 'users/my_page/' => 'users#my_page', as: 'my_page'
-  get 'my_page/edit' => 'users#edit', as: 'user_edit'
+  get 'my_page/edit/:id' => 'users#edit', as: 'user_edit'
   get 'my_page/:id/recipes' => 'users#recipe_index', as: 'user_recipes'
   resources :users, only: [:update, :show, :index] do
     get :book_marks, on: :collection

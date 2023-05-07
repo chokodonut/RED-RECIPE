@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
   before_action :ensure_guest_user, only: [:edit]
-  
+
   def show
     @user = User.find(params[:id])
     #byebug
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def update
@@ -48,9 +48,9 @@ class UsersController < ApplicationController
   end
 
   def is_matching_login_user
-    @user = current_user
-    if @user != current_user
-      redirect_to root_path
+     @user = User.find(params[:id])
+    unless @user.id == current_user.id
+      redirect_to root_path, notice: '不正なアクセスです'
     end
   end
 
