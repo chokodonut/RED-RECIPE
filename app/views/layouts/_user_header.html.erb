@@ -1,4 +1,10 @@
 
-<%= link_to "レシピ一覧", recipes_path, class: "btn btn-outline-danger" %>
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger" %>
-<%= link_to "マイページ", my_page_path, class: "btn btn-outline-danger" %>
+<%= link_to recipes_path, class: "btn btn-outline-warning" do %>
+  <i class="fab fa-hotjar"></i>レシピ一覧
+<% end %>
+<%= link_to destroy_user_session_path, method: :delete, class: "btn btn-outline-warning" do %>
+  <i class="fas fa-sign-out-alt"></i>ログアウト
+<% end %>
+<%= link_to my_page_path, class: "btn btn-outline-warning" do %>
+  <i class="fas fa-user-circle"></i>マイページ
+<% end %>

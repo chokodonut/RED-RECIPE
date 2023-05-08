@@ -1,6 +1,6 @@
-<div class="row">
-  <img src="top_img.jpg">
-</div>
+<!--<div class="row">-->
+<!--  <img src="top_img.jpg">-->
+<!--</div>-->
 
 
 <div class="row">
@@ -16,6 +16,7 @@
           <h5 class="card-title"><%= recipe.title %></h5>
           <p class="card-text mb-0", style="color: #DC3543;">辛さレベル<%= recipe.hot_level %></p>
           <p class="card-text"><%= truncate(recipe.description, length: 30) %></p>
+          <p class="card-text mb-0"><i class="far fa-clock"></i><%= recipe.time %>分</p>
           <%= link_to  recipe_reports_path(recipe.id), class: "text-secondary mb-0" do %>
             <p class="card-text">つくれぽ:<%= recipe.reports.count %></p>
           <% end %>
