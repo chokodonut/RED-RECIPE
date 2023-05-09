@@ -16,7 +16,7 @@
         <div class="container">
           <% if admin_signed_in? %>
             <%= link_to admin_root_path, class: "navbar-brand" do %>
-              <div class="text-danger">
+              <div class="text-warning">
                 <h1>RED RECIPE<i class="fas fa-pepper-hot"></i></h1>
               </div>
             <% end %>
@@ -55,10 +55,12 @@
       </nav>
     </header>
     <%= yield %>
-    <footer class="bg-danger text-warning pt-3 pb-3">
-      <div class="container">
-        <div class="row no-gutters">
-          <p>RED RECIPE<i class="fas fa-pepper-hot"></i></p>
+    <footer class="mt-auto">
+      <div class="bg-danger text-warning pb-3 mt-4">
+        <div class="container">
+          <div class="row">
+            <p style="margin-bottom: auto;">RED RECIPE<i class="fas fa-pepper-hot"></i></p>
+          </div>
         </div>
       </div>
     </footer>

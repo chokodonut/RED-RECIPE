@@ -6,6 +6,10 @@
           <%= image_tag report.get_image(100,100) %>
           <%= report.content %>
         </td>
+
+        <td>
+          <%= link_to "削除", admin_report_path(report.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        </td>
       </tr>
     <% end %>
   </table>

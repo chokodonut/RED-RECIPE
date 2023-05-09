@@ -15,6 +15,8 @@ class Admin::UsersController < ApplicationController
     @report = @user.reports
   end
 
+  
+
   def destroy
     user = User.find(params[:id])
     user.destroy

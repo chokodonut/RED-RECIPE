@@ -1,4 +1,5 @@
 <div class="container">
+  <%= flash[:notice] %>
   <h3>会員一覧</h3>
   <table class="table table-striped table-hover">
     <tr>
@@ -20,7 +21,7 @@
         </td>
         <td>
           <%= link_to 'レシピ一覧', admin_admin_index_path(user.id), class: 'btn btn-outline-success' %>
-          <%= link_to 'つくれぽ一覧',  admin_user_report_path(user.id), class: 'btn btn-outline-success' %>
+          <%= link_to 'つくれぽ一覧', admin_user_report_path(user.id), class: 'btn btn-outline-success' %>
         </td>
       </tr>
     <% end %>

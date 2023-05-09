@@ -19,7 +19,7 @@ class ReportsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
 
     @report = @recipe.reports
-    
+
   end
 
   private
