@@ -20,7 +20,7 @@
           <%= l user.created_at %>
         </td>
         <td>
-          <%= link_to 'レシピ一覧', admin_admin_index_path(user.id), class: 'btn btn-outline-success' %>
+          <%= link_to 'レシピ一覧', admin_user_recipe_path(user.id), class: 'btn btn-outline-success' %>
           <%= link_to 'つくれぽ一覧', admin_user_report_path(user.id), class: 'btn btn-outline-success' %>
         </td>
       </tr>

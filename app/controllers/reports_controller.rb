@@ -15,11 +15,8 @@ class ReportsController < ApplicationController
   end
 
   def index
-     #binding.pry
     @recipe = Recipe.find(params[:recipe_id])
-
     @report = @recipe.reports
-
   end
 
   private

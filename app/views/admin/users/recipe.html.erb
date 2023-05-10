@@ -3,17 +3,20 @@
     <%= @user.name %>さんのレシピ一覧
   </h3>
   <% @recipe.each do |recipe| %>
-  <table class="table">
+  <table class="table table-striped table-hover">
+    <tr>
+      <th style="width: 50%"></th>
+      <th style="width: 20%"></th>
+    </tr>
     <tr>
       <td>
         <%= link_to admin_recipe_path(recipe.id) do %>
           <%= image_tag recipe.get_image(200,200) %>
         <% end %>
         <%= recipe.title %>
-        <%= recipe.description %>
       </td>
       <td>
-        <%= link_to "削除", admin_recipe_path(recipe.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        <%= link_to "削除", admin_recipe_path(recipe.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
       </td>
     </tr>
   </table>

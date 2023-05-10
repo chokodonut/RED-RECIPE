@@ -21,7 +21,7 @@
         <%= l @user.created_at %>
       </td>
       <td>
-        <%= link_to '削除', admin_user_path(@user.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        <%= link_to '削除', admin_user_path(@user.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
       </td>
     </tr>
   </table>
