@@ -15,6 +15,10 @@ ja:
       steps:
         step_no: ステップ
         content: 作り方
+      report:
+        content: レポート
+      genre:
+        name: ジャンル名
     errors:
       models:
         recipe:

@@ -13,7 +13,8 @@
     </div>
   </div>
   <%= render "recipe", recipe: @recipe %>
+  <div class="row">
+    <%= paginate @recipe %>
+  </div>
 </div>
-<div class="row">
-  <%= paginate @recipe %>
-</div>
+

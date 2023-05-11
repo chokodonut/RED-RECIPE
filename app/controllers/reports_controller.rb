@@ -9,9 +9,12 @@ class ReportsController < ApplicationController
     @report = current_user.reports.new(report_params)
     @report.recipe_id = @recipe.id
     #binding.pry
-    @report.save
+    if @report.save
     #byebug
-    redirect_to  recipe_reports_path
+      redirect_to  recipe_reports_path, notice: "つくれぽを投稿しました。"
+    else
+      render :new
+    end
   end
 
   def index

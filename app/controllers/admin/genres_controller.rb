@@ -5,8 +5,11 @@ class Admin::GenresController < ApplicationController
 
   def create
     @genre = Genre.new(genre_params)
-    @genre.save
-    redirect_to admin_genres_path
+    if @genre.save
+    redirect_to admin_genres_path, notice: "ジャンルを登録しました。"
+    else
+      render :new
+    end
   end
 
   def index
@@ -26,7 +29,7 @@ class Admin::GenresController < ApplicationController
   def destroy
     genre = Genre.find(params[:id])
     genre.destroy
-    redirect_to admin_genres_path
+    redirect_to admin_genres_path, notice: "ジャンルを削除しました。"
   end
 
   private

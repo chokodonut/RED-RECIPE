@@ -1,4 +1,12 @@
 <div class="container">
+  <% if @recipe.errors.any? %>
+    <%= @recipe.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <div class="container mt-5">
     <div class="row">
       <div class="col-10 mx-auto">
