@@ -63,8 +63,8 @@ class RecipesController < ApplicationController
   def is_matching_login_user
     @recipes = current_user.recipes
     @recipe = @recipes.find_by(id: params[:id])
-    if @recipe.user_id != current_user.id
-      redirect_to root_path
+    unless @recipe == current_user
+      redirect_to root_path, notice: "不正なアクセスです。"
     end
   end
 end
