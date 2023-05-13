@@ -33,5 +33,4 @@ class Recipe < ApplicationRecord
     end
       Recipe.all
   end
-
 end

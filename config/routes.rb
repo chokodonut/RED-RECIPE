@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
 
   get 'search' => 'searchs#search'
+  get 'genre_search' => 'searchs#genre_search'
   get 'my_page/:id/reports' => 'users#report', as: 'my_page_reports'
   get 'users/my_page/' => 'users#my_page', as: 'my_page'
   get 'my_page/edit/:id' => 'users#edit', as: 'user_edit'
