@@ -9,8 +9,7 @@ class RecipesController < ApplicationController
     @recipe.materials.build
     @recipe.steps.build
     @recipe.materials.build
-    @recipe.steps.build
-    @recipe.materials.build
+
   end
 
   def create
@@ -27,6 +26,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipe = Recipe.page(params[:page])
+    @genres = Genre.all
   end
 
   def show
@@ -37,9 +37,6 @@ class RecipesController < ApplicationController
     is_matching_login_user
     @user = current_user
     @recipe = Recipe.find(params[:id])
-    if @recipe.user != current_user
-      redirect_to recipes_path
-    end
   end
 
   def update
@@ -61,9 +58,9 @@ class RecipesController < ApplicationController
   end
 
   def is_matching_login_user
-    @recipes = current_user.recipes
-    @recipe = @recipes.find_by(id: params[:id])
-    unless @recipe == current_user
+    @recipe = Recipe.find(params[:id])
+    #byebug
+    unless @recipe.user.id == current_user.id
       redirect_to root_path, notice: "不正なアクセスです。"
     end
   end

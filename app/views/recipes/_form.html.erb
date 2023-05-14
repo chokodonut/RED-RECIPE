@@ -39,11 +39,7 @@
         <%= render 'material_fields', :f => material %>
       <% end %>
       <div class='links'>
-        <%= link_to_add_association '材料追加', f, :materials,
-         data: {
-          association_insertion_node: '#detail-association-insertion-point',
-          association_insertion_method: 'after'
-          } %>
+        <%= link_to_add_association '材料追加', f, :materials %>
       </div>
     </div>
   <div id="detail-association-insertion-point"></div>
@@ -55,9 +51,6 @@
     <div class='links'>
       <div class="text-warning">
       <%= link_to_add_association 'ステップ追加', f, :steps %>
-      <!--# data: {-->
-      <!--#   association_insertion_node: '#detail-association-insertion-point',-->
-      <!--#   association_insertion_method: 'append'}-->
       </div>
     </div>
   </div>
