@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
   before_action :ensure_guest_user, only: [:edit]
+  before_action :authenticate_user!, only: [:show, :my_page]
 
   def show
     @user = User.find(params[:id])

@@ -28,23 +28,22 @@
             <% end %>
           <% end %>
 
-          <%= form_with url: search_path, local: true, method: :get do |f| %>
-            <div class="input-group">
-              <%= f.select :range, options_for_select([['User'], ['Recipe']]), class: "border border-danger mx-2" %>
-            <div class="rounded-3">
-              <%= f.text_field :keyword, placeholder: 'キーワード検索', class: "form-control mx-2", style: "border-color: #DC3543;" %>
-            </div>
-              <%= f.submit "検索", class: "btn btn-outline-warning mx-3" do %>
-                <i class="fas fa-search"></i>
-              <% end %>
-            </div>
-          <% end %>
-
           <% if admin_signed_in? %>
             <%= render '/layouts/admin_header' %>
           <% elsif user_signed_in?%>
             <%= render '/layouts/user_header' %>
           <% else %>
+            <%= form_with url: search_path, local: true, method: :get do |f| %>
+              <div class="input-group">
+                <%= f.select :range, options_for_select([['User'], ['Recipe']]), class: "border border-danger mx-2" %>
+              <div class="rounded-3">
+                <%= f.text_field :keyword, placeholder: 'キーワード検索', class: "form-control mx-2", style: "border-color: #DC3543;" %>
+              </div>
+                <%= f.submit "検索", class: "btn btn-outline-warning mx-3" do %>
+                  <i class="fas fa-search"></i>
+                <% end %>
+              </div>
+            <% end %>
             <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "btn btn-outline-warning" %>
             <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-warning" %>
             <%= link_to new_user_session_path, class: "btn btn-outline-warning" do %>
