@@ -1,5 +1,6 @@
-
-<%= link_to 'ジャンル', admin_genres_path, class: "btn btn-outline-warning" %>
-<%= link_to destroy_admin_session_path, method: :delete, class: "btn btn-outline-warning" do %>
-  <i class="fas fa-sign-out-alt"></i>ログアウト
-<% end %>
+<div class="row">
+  <%= link_to 'ジャンル', admin_genres_path, class: "btn btn-outline-warning mx-4" %>
+  <%= link_to destroy_admin_session_path, method: :delete, class: "btn btn-outline-warning mx-4" do %>
+    <i class="fas fa-sign-out-alt"></i>ログアウト
+  <% end %>
+</div>

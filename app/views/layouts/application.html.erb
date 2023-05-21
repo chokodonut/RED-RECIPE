@@ -46,16 +46,18 @@
                   <div class="rounded-3">
                     <%= f.text_field :keyword, placeholder: 'キーワード検索', class: "form-control mx-2", style: "border-color: #DC3543;" %>
                   </div>
-                    <%= f.submit "検索", class: "btn btn-outline-warning mx-2" do %>
+                    <%= f.submit "検索", class: "btn btn-outline-warning mx-3" do %>
                       <i class="fas fa-search"></i>
                     <% end %>
                   </div>
                 <% end %>
-                <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "btn btn-outline-warning" %>
-                <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-warning" %>
-                <%= link_to new_user_session_path, class: "btn btn-outline-warning" do %>
-                <i class="fas fa-sign-in-alt"></i>ログイン
-                <% end %>
+                <div class="row">
+                  <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "btn btn-outline-warning ml-5 mr-1" %>
+                  <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-warning mx-1" %>
+                  <%= link_to new_user_session_path, class: "btn btn-outline-warning mx-1" do %>
+                    <i class="fas fa-sign-in-alt"></i>ログイン
+                  <% end %>
+                </div>
               <% end %>
             </div>
           </div>
