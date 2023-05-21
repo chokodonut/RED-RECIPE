@@ -29,8 +29,11 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update(users_params)
-    redirect_to my_page_path, notice: 'プロフィールが編集されました。'
+    if @user.update(users_params)
+      redirect_to my_page_path, notice: 'プロフィールが編集されました。'
+    else
+      render :edit
+    end
   end
 
   def recipe_index

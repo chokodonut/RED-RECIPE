@@ -19,6 +19,8 @@ ja:
         content: レポート
       genre:
         name: ジャンル名
+      user:
+        name: ニックネーム
     errors:
       models:
         recipe:
