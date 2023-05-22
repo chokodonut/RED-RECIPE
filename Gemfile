@@ -59,7 +59,9 @@ gem 'devise'
 gem "cocoon"
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
-gem 'pry-rails'
+group :development, :test do
+  gem 'pry-rails'
+end  
 gem 'kaminari','~> 1.2.1'
 gem 'rails-i18n'
 
