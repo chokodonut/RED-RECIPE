@@ -13,7 +13,7 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :materials, allow_destroy: true
   has_many :book_marks, dependent: :destroy
   has_many :reports, dependent: :destroy
-  has_many :steps, dependent: :destroy
+  has_many :steps
   accepts_nested_attributes_for :steps, allow_destroy: true
 
   def get_image(width, height)

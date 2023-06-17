@@ -70,10 +70,10 @@
   </table>
   <h3>作り方</h3>
   <table class="table">
-    <% @recipe.steps.each do |recipe| %>
+    <% @recipe.steps.each.with_index(1) do |recipe, index| %>
       <tr>
         <th>
-          <%= recipe.step_no %>
+          <%= index %>
         </th>
         <th>
           <%= recipe.content %>
