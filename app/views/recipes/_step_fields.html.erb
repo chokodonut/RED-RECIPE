@@ -1,14 +1,6 @@
 <div class="nested-fields">
   <div class="row">
-    <div class="col-4">
-      <div class="form-inline">
-        <div class="form-check form-check-inline">
-          <%#= f.label :ステップ %><br />
-          <%#= f.select :step_no, *[1..10], class: "form-control" %>
-        </div>
-      </div>
-    </div>
-    <div class="col-4">
+    <div class="col-4 offset-8">
       <div class="form-group">
         <%= f.file_field :images, multiple: true, accept: "image/*" %>
       </div>

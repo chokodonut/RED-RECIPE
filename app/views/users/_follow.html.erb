@@ -14,19 +14,6 @@
             <%= user.name %>
           <% end %>
         </td>
-        <td>
-          <% if user != current_user %>
-            <% if user.is_followed_by?(current_user) %>
-              <%=link_to user_relationships_path(user), method: :delete do %>
-                <button type="button" class="btn btn btn-outline-danger">フォロー解除</button>
-              <% end %>
-            <% else %>
-              <%=link_to user_relationships_path(user), method: :post do %>
-                <button type="button" class="btn btn btn-outline-primary">フォロー</button>
-              <% end %>
-            <% end %>
-          <% end %>
-        </td>
       </tr>
     <% end %>
   </tbody>
