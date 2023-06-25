@@ -54,7 +54,7 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:time, :hot_level, :image, :description, :genre_id, :title,
-    materials_attributes: [:id, :name, :quantity, :_destroy], steps_attributes: [:id, :step_no, :content, :_destroy, images: []])
+    materials_attributes: [:id, :name, :quantity, :_destroy], steps_attributes: [:id, :content, :_destroy, images: []])
   end
 
   def is_matching_login_user
